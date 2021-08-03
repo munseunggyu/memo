@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- reset-css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+
+  <!-- material-icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="../public/main.css">
+  <script defer src="../public/main.js"></script>
+
+  <title>Document</title>
+</head>
+
+<body>
+ 
+  <%- include('nav.html') %>
+
+  <section >
+    <div class="container">
+      <h2>나의 메모장</h2>
+    </div>
+    <div class="container input-group mb-2">
+      <input class="form-control" id='search-input'>
+      <button class="input-group-append btn btn-dark" id="search">검색</button>
+    </div>
+  </section>
+  
+  <div class="container">
+    <ul class="list-group">
+      <% for(let i = 0; i<writes.length; i++){ %>
+      <li class="list-group-item">
+        <H4>제목: <%=writes[i].title%></H4>
+        <p>내용:<%=writes[i].contents.slice(0,5)%>... </p>
+        <a href="/detail/<%=writes[i]._id%>">상세페이지</a>
+        <button class="btn btn-secondary del" data-id="<%= writes[i]._id%>">삭제</button>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</body>
+
+</html>
