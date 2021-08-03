@@ -21,10 +21,14 @@ MongoClient.connect('mongodb+srv://admin:qwer1234@cluster0.qeyqz.mongodb.net/myF
   app.listen('5050',() => console.log('5050'))
 })
 
+
 app.get('/',(req,res) => {
   db.collection('write').find().toArray((error,result) => {
     res.render('index.ejs',{writes:result})
   })
+})
+app.get('/index',(req,res) => {
+  res.sendFile(__dirname + '/index.html')
 })
 app.get('/list',  (req, res) => {
   db.collection('write').find().toArray(function (error, result) {
